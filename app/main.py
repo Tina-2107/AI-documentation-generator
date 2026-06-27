@@ -1,4 +1,5 @@
 from fastapi import FastAPI,UploadFile
+from app.routes.upload import router as upload_router
 from pydantic import BaseModel
 import os
 
@@ -24,20 +25,7 @@ async def about():
 "version": "1.0"
 }
     
-@app.post("/upload_file")
-async def upload(file: UploadFile):
-    contents = await file.read()
-    text = contents.decode("utf-8")
-    lines = text.splitlines()
-
-    return {
-        "filename": file.filename,
-        "lines": len(lines),
-        "characters": len(text),
-        "content": text,
-        "size": len(contents),
-        "functions_found": text.count("def "),
-    }
+app.include_router(upload_router)
     
 """
 @app.get("/project_info")
