@@ -133,6 +133,13 @@ http://127.0.0.1:8000/docs
 - Organized backend into routes and services
 - Added basic file validation
 
+## Day 3 Progress
+
+- Implemented Python AST parser
+- Extracted functions and classes
+- Parsed import statements
+- Added code analysis endpoint
+
 ---
 
 ## 🎯 Roadmap

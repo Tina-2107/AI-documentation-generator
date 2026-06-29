@@ -1,7 +1,8 @@
-from fastapi import FastAPI,UploadFile
+from fastapi import FastAPI
 from app.routes.upload import router as upload_router
 from pydantic import BaseModel
-import os
+from app.routes.analyze import router as analyze_router
+
 
 app = FastAPI()
 
@@ -26,31 +27,4 @@ async def about():
 }
     
 app.include_router(upload_router)
-    
-"""
-@app.get("/project_info")
-async def project_info():
-    files = os.listdir("project")
-    file_info = []
-
-    for file in files:
-        path = os.path.join("project", file)
-
-        if not os.path.isfile(path):
-            continue
-
-        if not file.endswith(".py"):
-            continue
-
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read()
-
-        file_info.append({
-            "filename": file,
-            "lines": len(content.splitlines()),
-            "characters": len(content),
-            "functions_found": content.count("def ")
-        })
-
-    return {"project_files": file_info}
-"""
+app.include_router(analyze_router)
