@@ -45,17 +45,12 @@ def analyze_python_code(code: str):
             
     for node in tree.body:
         if isinstance(node, ast.Assign):
-            value = None
-        try:
-            value = ast.unparse(node.value)
-        except Exception:
-            pass
             for target in node.targets:
                 if isinstance(target, ast.Name):
                     global_variables.append({
-                    "name": target.id,
-                    "value": value
-                })
+                        "name": target.id,
+                        "value": ast.unparse(node.value)
+                    })
 
     return {
         "functions": functions,
