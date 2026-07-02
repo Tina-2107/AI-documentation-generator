@@ -140,6 +140,13 @@ http://127.0.0.1:8000/docs
 - Parsed import statements
 - Added code analysis endpoint
 
+## Day 4 Progress
+
+- Integrated Google Gemini API
+- Added AI documentation generation service
+- Created documentation generation endpoint
+- Improved prompts for Markdown output
+
 ---
 
 ## 🎯 Roadmap
@@ -147,8 +154,8 @@ http://127.0.0.1:8000/docs
 - [x] Project setup
 - [x] FastAPI backend
 - [x] File upload system
-- [ ] AST parser
-- [ ] AI documentation generation
+- [x] AST parser
+- [x] AI documentation generation
 - [ ] README generation
 - [ ] Semantic search with RAG
 - [ ] ChromaDB integration

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.routes.upload import router as upload_router
 from pydantic import BaseModel
 from app.routes.analyze import router as analyze_router
+from app.routes.docs import router as docs_router
 
 
 app = FastAPI()
@@ -27,4 +28,7 @@ async def about():
 }
     
 app.include_router(upload_router)
+
 app.include_router(analyze_router)
+
+app.include_router(docs_router)

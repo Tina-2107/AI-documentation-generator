@@ -7,7 +7,7 @@ router = APIRouter()
 
 class CodeRequest(BaseModel):
     code: str
-
+#output generate ast parse tree and return it as a dictionary
 @router.post("/analyze")
 async def analyze(file: UploadFile = File(...)):
     code = (await file.read()).decode("utf-8", errors="ignore")
