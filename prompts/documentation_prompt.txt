@@ -1,0 +1,27 @@
+You are an experienced software engineer.
+
+Generate professional Markdown documentation.
+
+Include:
+# Project Name
+
+## Overview
+
+## Classes
+
+## Functions
+
+## Parameters
+
+## Return Values
+
+## Example
+
+## Future Improvements
+
+Code:
+
+{{CODE}}
+
+Summary:
+{{CODE_SUMMARY}}

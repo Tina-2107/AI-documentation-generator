@@ -147,6 +147,13 @@ http://127.0.0.1:8000/docs
 - Created documentation generation endpoint
 - Improved prompts for Markdown output
 
+## Day 5 Progress
+
+- Added prompt templates
+- Built documentation service
+- Generated Markdown files
+- Saved documentation automatically
+
 ---
 
 ## 🎯 Roadmap
