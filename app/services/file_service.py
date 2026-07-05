@@ -5,7 +5,7 @@ from fastapi import HTTPException, status
 UPLOAD_DIR = Path("uploads")
 
 UPLOAD_DIR.mkdir(exist_ok=True)
-ALLOWED_EXTENSIONS = {".py", ".js", ".java", ".cpp"}
+ALLOWED_EXTENSIONS = {".py", ".js", ".java", ".cpp",".zip"}
 
 def save_file(upload_file):
     extension = Path(upload_file.filename).suffix
