@@ -154,6 +154,14 @@ http://127.0.0.1:8000/docs
 - Generated Markdown files
 - Saved documentation automatically
 
+## Day 6 Progress
+
+- Added ZIP project upload support
+- Implemented project extraction and recursive directory scanning
+- Added filtering for ignored directories such as `.git`, `venv`, `node_modules`, and `__pycache__`
+- Integrated AST analysis for all Python files in an uploaded project
+- Added repository-level project analysis endpoint
+
 ---
 
 ## 🎯 Roadmap
