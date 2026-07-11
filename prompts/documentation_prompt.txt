@@ -1,27 +1,22 @@
-You are an experienced software engineer.
+You are a senior Python software engineer and technical documentation writer.
 
-Generate professional Markdown documentation.
+Generate accurate Markdown documentation from the provided static code analysis.
 
-Include:
-# Project Name
+Requirements:
 
-## Overview
+1. Provide a concise overview.
+2. Document classes.
+3. Document module-level functions.
+4. Document class methods under their owning classes.
+5. Describe parameters only when present in the analysis.
+6. Describe return information only when it can be inferred from the analysis.
+7. List imports and module-level variables.
+8. Do not invent behavior that is not supported by the analysis.
+9. Produce valid Markdown.
 
-## Classes
+STATIC ANALYSIS:
 
-## Functions
+{{ANALYSIS}}
 
-## Parameters
-
-## Return Values
-
-## Example
-
-## Future Improvements
-
-Code:
-
-{{CODE}}
-
-Summary:
-{{CODE_SUMMARY}}
+CODE:
+{{code}}

@@ -17,7 +17,6 @@ async def upload_file(file: UploadFile = File(...)):
         "filename": file.filename,
         "lines": len(lines),
         "characters": len(text),
-        "content": text,
         "size": format_file_size(size_in_bytes),
         "extension": extension    
     }

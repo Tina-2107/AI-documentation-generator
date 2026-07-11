@@ -1,6 +1,18 @@
 import ast
 from fastapi import HTTPException
 
+def extract_function(node):
+    return {
+        "name": node.name,
+        "parameters": [
+            arg.arg for arg in node.args.args
+        ],
+        "docstring": ast.get_docstring(node),
+        "is_async": isinstance(node, ast.AsyncFunctionDef),
+    }
+
+
+
 def analyze_python_code(code: str):
 # handle syntax errors gracefully
     try:
@@ -16,18 +28,30 @@ def analyze_python_code(code: str):
     
     global_variables = []
     
+    
     for node in ast.walk(tree):
-        if isinstance(node, ast.FunctionDef):
-            functions.append({
-                        "name": node.name,
-                        "parameters": [
-                                    arg.arg
-                                    for arg in node.args.args
-                                    ],
-                        "docstring": ast.get_docstring(node)
-                        })
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)
+        ):
+            functions.append(extract_function(node))
+
         elif isinstance(node, ast.ClassDef):
-            classes.append(node.name)
+            class_info = {
+                "name": node.name,
+                "docstring": ast.get_docstring(node),
+                "methods": [],
+            }
+
+            for item in node.body:
+
+                if isinstance(
+                    item,
+                    (ast.FunctionDef, ast.AsyncFunctionDef)
+                ):
+                    class_info["methods"].append(
+                        extract_function(item)
+                    )
+            classes.append(class_info)
+            
         elif isinstance(node, ast.Import):
             for alias in node.names:
                 imports.append({

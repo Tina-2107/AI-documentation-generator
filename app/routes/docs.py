@@ -14,8 +14,6 @@ async def generate(file: UploadFile = File(...)):
             status_code=400,
             detail="Uploaded file is empty."
         )
-    
-    code_summary = analyze_python_code(code)
-    result=build_documentation(code,code_summary,file.filename)
+    result=build_documentation(code,file.filename)
     
     return result

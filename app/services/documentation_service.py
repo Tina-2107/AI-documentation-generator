@@ -1,4 +1,5 @@
 from pathlib import Path
+from app.services.ast_service import analyze_python_code
 from app.services.llm_service import generate_documentation
 
 PROMPT_FILE_PATH = Path("prompts/documentation_prompt.txt")
@@ -8,28 +9,33 @@ OUTPUT.mkdir(exist_ok=True)
 
 def format_summary(summary: dict) -> str:
     text = ""
+    
     text += "Functions:\n"
-
     for func in summary.get("functions", []):
         text += f"- {func['name']}({', '.join(func['parameters'])})\n"
+    
     text += "\nClasses:\n"
-
     for cls in summary.get("classes", []):
-        text += f"- {cls}\n"
+        text += f"- {cls['name']}\n"
+    
     text += "\nImports:\n"
-
     for imp in summary.get("imports", []):
-        text += f"- {imp}\n"
+        text += f"- {imp['module']}\n"
+        
+    text += "\nGlobal Variables:\n"
+    for var in summary.get("globals", []):
+        text += f"- {var['name']}: {var['value']}\n"
+        
     return text
 
-def build_documentation(code,code_summary,filename):
+def build_documentation(code,filename):
     template=PROMPT_FILE_PATH.read_text()
-    prompt=template.replace("{{CODE}}",code)
-    summary_text = format_summary(code_summary)
-    prompt = prompt.replace(
-        "{{CODE_SUMMARY}}",
-        summary_text
-        )
+    code_summary = analyze_python_code(code)
+    prompt = template.replace(
+        "{{analysis}}", format_summary(code_summary)
+    ).replace(
+        "{{code}}", code
+    )
     documentation = generate_documentation(prompt)
     file_name = Path(filename).stem
     output_file =OUTPUT/f"{file_name}_documentation.md"
