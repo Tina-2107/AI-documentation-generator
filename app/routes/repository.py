@@ -1,11 +1,11 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
-from pathlib import Path
-from app.services.file_service import save_file
-from app.services.repository_service import extract_zip_file,scan_project_directory,analyze_project
+from app.services.repository_service import extract_zip_file, save_repository_zip,scan_project_directory,analyze_project
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/repositories",
+    tags=["Repositories"],)
 
-@router.post("/scan-project")
+@router.post("/scan")
 
 async def repository_router(file: UploadFile = File(...)):
     """
@@ -16,15 +16,15 @@ async def repository_router(file: UploadFile = File(...)):
     returns:
         A dictionary containing analysis results.   
     """
-    saved_file_path = save_file(file)
-    if not file.filename.lower().endswith(".zip"):
-        raise HTTPException(status_code=400, detail="Invalid file format. Please upload a ZIP file.")
+    
+    saved_file_path = save_repository_zip(file)
     extracted_dir = extract_zip_file(saved_file_path)
     scan_results = scan_project_directory(extracted_dir)
     analysis_results = analyze_project(extracted_dir)
     
     return {
+    "message": "Repository uploaded and extracted successfully",
     "project": extracted_dir.name,
-    "files_found": len(scan_results),
+    "files_found": analysis_results["total_python_files"],
     "analysis": analysis_results
 }
