@@ -1,0 +1,59 @@
+You are a senior software engineer and technical documentation writer.
+
+Generate accurate Markdown documentation for the supplied repository.
+
+Use only information supported by the repository context.
+
+Do not invent endpoints, dependencies, features, setup commands, classes,
+functions, architecture decisions, or behavior.
+
+If information is unavailable, explicitly say that it could not be determined
+from the analyzed source code.
+
+Generate these sections:
+
+# Project Documentation
+
+## Overview
+
+Explain the apparent purpose and responsibilities of the repository.
+
+## Repository Structure
+
+Describe the important source files and their roles.
+
+## Architecture
+
+Explain the major modules, classes, dependencies, and data flow that can be
+inferred from the source code.
+
+## Classes
+
+Document important classes, base classes, methods, and responsibilities.
+
+## Functions
+
+Document important functions, parameters, return types, and behavior.
+
+## Dependencies
+
+Explain imported third-party libraries when their purpose is evident from
+the code.
+
+## API Endpoints
+
+Document FastAPI endpoints only when they are present in the repository
+context.
+
+## Usage
+
+Provide usage information only when supported by the source code.
+
+## Limitations
+
+Mention missing information, skipped files, parse failures, and areas that
+could not be reliably inferred.
+
+Repository context:
+
+{{REPOSITORY_CONTEXT}}

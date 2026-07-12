@@ -11,7 +11,7 @@ ALLOWED_EXTENSIONS = {".py",".zip"}
 
 def save_file(upload_file):
     extension = Path(upload_file.filename).suffix.lower()
-    filename = Path(upload_file.filename).name
+    #filename = Path(upload_file.filename).name
     if not upload_file.filename:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

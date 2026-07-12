@@ -1,6 +1,6 @@
 from fastapi import APIRouter, File, HTTPException,UploadFile
 from app.services.ast_service import analyze_python_code
-from app.services.documentation_service import build_documentation
+from app.services.documentation_service import build_file_documentation
 
 
 router=APIRouter()
@@ -14,6 +14,6 @@ async def generate(file: UploadFile = File(...)):
             status_code=400,
             detail="Uploaded file is empty."
         )
-    result=build_documentation(code,file.filename)
+    result=build_file_documentation(code,file.filename)
     
     return result

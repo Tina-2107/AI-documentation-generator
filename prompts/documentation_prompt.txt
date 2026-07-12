@@ -16,7 +16,7 @@ Requirements:
 
 STATIC ANALYSIS:
 
-{{ANALYSIS}}
+{{analysis}}
 
 CODE:
 {{code}}
