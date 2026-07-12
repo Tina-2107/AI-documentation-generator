@@ -11,12 +11,11 @@ async def upload_file(file: UploadFile = File(...)):
     file.file.seek(0) #After reading the file, reset the pointer
     text = contents.decode("utf-8")
     lines = text.splitlines()
-    path, extension = save_file(file)
+    path = save_file(file)
     size_in_bytes = path.stat().st_size 
     return {
         "filename": file.filename,
         "lines": len(lines),
         "characters": len(text),
-        "size": format_file_size(size_in_bytes),
-        "extension": extension    
+        "size": format_file_size(size_in_bytes), 
     }
