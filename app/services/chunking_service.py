@@ -81,9 +81,10 @@ def create_symbol_chunks(
             symbol_type: str,
         ) -> list[CodeChunk]:
 
-    content = ast.get_node_source(source, node)
-
-    parts = split_larger_content(content)
+    content = ast.get_source_segment(source, node)
+    if content is None:
+        content = ast.unparse(node)
+    parts = split_larger_content(content,MAX_CHUNK_CHARS,OVERLAP_LINES)
 
     chunks = []
 
@@ -184,8 +185,8 @@ def chunk_python_file(
             )
 
             
-        if module_nodes:
-            module_parts=[ ast.get_node_source(source, node)
+    if module_nodes:
+            module_parts=[ ast.get_source_segment(source, node)
             for node in module_nodes
         ]
             
