@@ -168,6 +168,17 @@ http://127.0.0.1:8000/docs
 
 - Project ZIP → Secure Extraction → Repository Scanner → AST Analysis → Context Builder → Gemini → Markdown Documentation
 
+## Day 8 Progress
+
+- Added AST-aware source code chunking
+- Added deterministic chunk identifiers
+- Added local embedding generation
+- Integrated persistent ChromaDB vector storage
+- Added project-level re-indexing
+- Added repository indexing endpoint
+- Added metadata-aware code chunk storage
+- Added unit tests for embedding
+
 ## 🎯 Roadmap
 
 - [x] FastAPI backend
@@ -177,7 +188,7 @@ http://127.0.0.1:8000/docs
 - [x] Documentation engine
 - [x] Repository scanner
 - [x] End-to-end documentation pipeline
-- [ ] ChromaDB + Embeddings
+- [x] ChromaDB + Embeddings
 - [ ] Semantic Search + RAG
 - [ ] Chat with Codebase
 - [ ] Database
