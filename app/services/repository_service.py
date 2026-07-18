@@ -66,7 +66,8 @@ def extract_zip_file(zip_path:Path)->Path:
 
 
 
-def scan_project_directory(project_dir: Path) -> list:
+def scan_project_directory(
+    project_dir: Path) -> list[Path]:
     python_files = []
     for file in project_dir.rglob("*.py"):
         if not any(folder in file.parts for folder in IGNORE_FOLDERS):

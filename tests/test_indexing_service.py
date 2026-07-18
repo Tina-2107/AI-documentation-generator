@@ -1,8 +1,10 @@
-from pathlib import Path
-
 from app.services.indexing_service import index_repository
 
+class FakeEmbeddingService:
 
+    def embed_documents(self, documents):
+        return [[0.1, 0.2, 0.3] for _ in documents]
+    
 def test_index_repository(tmp_path):
 
     project = tmp_path / "project"

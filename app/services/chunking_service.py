@@ -111,6 +111,8 @@ def create_symbol_chunks(
                     "end_line": node.end_lineno,
                     "part_index": part_index,
                     "part_count": len(parts),
+                    "language": "python",
+                    "chunk_type": "code",
                 },
             )
         )
