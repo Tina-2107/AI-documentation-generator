@@ -4,4 +4,8 @@ __pycache__/
 .env
 uploads/*
 chroma_data/
+<<<<<<< Updated upstream
 extracted_projects/
+=======
+extracted_data/
+>>>>>>> Stashed changes
