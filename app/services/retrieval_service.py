@@ -1,5 +1,6 @@
 from app.services.embedding_service import EmbeddingService
 from app.services.vector_store_service import VectorStoreService
+from fastapi import HTTPException
 
 MAX_DISTANCE = 0.8
 
@@ -19,6 +20,8 @@ class RetrievalService:
         project_id:str,
         top_k: int=5,
         ):
+        if(query==""):
+            raise HTTPException(status_code=400, detail="question is not given")
         query_embedding = self.embedding_service.embed_query(query)
         
         results=self.vector_store.search(
