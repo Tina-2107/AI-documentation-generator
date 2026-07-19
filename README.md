@@ -189,6 +189,16 @@ http://127.0.0.1:8000/docs
 - Search API
 - Test for chunking_service and indexing_service
 
+## Day 10 Progress
+
+- Implemented Retrieval-Augmented Generation (RAG)
+- Added AI-powered codebase question answering
+- Connected semantic retrieval with Gemini
+- Added grounded repository context
+- Added source references for generated answers
+- Added codebase chat API
+- Added RAG unit tests
+
 ## 🎯 Roadmap
 
 - [x] FastAPI backend
@@ -200,7 +210,7 @@ http://127.0.0.1:8000/docs
 - [x] End-to-end documentation pipeline
 - [x] ChromaDB + Embeddings
 - [x] Semantic Search + RAG
-- [ ] Chat with Codebase
+- [x] Chat with Codebase
 - [ ] Database
 - [ ] React frontend
 - [ ] Testing + Security
