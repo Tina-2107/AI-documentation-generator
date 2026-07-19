@@ -21,7 +21,7 @@ class User:
     chunks = chunk_python_file(
         python_file,
         project_root,
-        "sample_project"
+        project_id="demo",
     )
 
     assert len(chunks) == 2
@@ -34,7 +34,7 @@ class User:
     assert "add" in names
     assert "User" in names
     
-# Deterministic IDs
+# Deterministic IDs :Your IDs should always be identical.
 def test_chunk_id_is_deterministic():
 
     id1 = create_chunk_id(
@@ -54,6 +54,7 @@ def test_chunk_id_is_deterministic():
     )
 
     assert id1 == id2
+    
     #Changing content changes ID
 def test_chunk_id_changes_when_content_changes():
 

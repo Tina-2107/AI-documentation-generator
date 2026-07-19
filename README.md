@@ -179,6 +179,26 @@ http://127.0.0.1:8000/docs
 - Added metadata-aware code chunk storage
 - Added unit tests for embedding
 
+## Day 9 Progress
+
+- Semantic Retrieval
+- Vector Search
+- Query Embedding
+- Chroma Similarity Search
+- Project Filtering
+- Search API
+- Test for chunking_service and indexing_service
+
+## Day 10 Progress
+
+- Implemented Retrieval-Augmented Generation (RAG)
+- Added AI-powered codebase question answering
+- Connected semantic retrieval with Gemini
+- Added grounded repository context
+- Added source references for generated answers
+- Added codebase chat API
+- Added RAG unit tests
+
 ## 🎯 Roadmap
 
 - [x] FastAPI backend
@@ -189,8 +209,8 @@ http://127.0.0.1:8000/docs
 - [x] Repository scanner
 - [x] End-to-end documentation pipeline
 - [x] ChromaDB + Embeddings
-- [ ] Semantic Search + RAG
-- [ ] Chat with Codebase
+- [x] Semantic Search + RAG
+- [x] Chat with Codebase
 - [ ] Database
 - [ ] React frontend
 - [ ] Testing + Security
