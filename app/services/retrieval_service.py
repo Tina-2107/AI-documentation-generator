@@ -20,8 +20,9 @@ class RetrievalService:
         project_id:str,
         top_k: int=5,
         ):
-        if(query==""):
+        if not query.strip():
             raise HTTPException(status_code=400, detail="question is not given")
+        
         query_embedding = self.embedding_service.embed_query(query)
         
         results=self.vector_store.search(
@@ -31,11 +32,11 @@ class RetrievalService:
         )
         filtered_results = []
         for content, metadata, distance in zip(
-        results["contents"],
-        results["metadatas"],
-        results["distances"],
+        results["documents"][0],
+        results["metadatas"][0],
+        results["distances"][0],
             ):
-            if distance <= MAX_DISTANCE:
+            #if distance <= MAX_DISTANCE:
                 filtered_results.append({
                 "content": content,
                 "metadata": metadata,
